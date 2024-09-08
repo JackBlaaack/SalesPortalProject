@@ -3,7 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test:ui": "cross-env TESTS=ui npx playwright test --project=ui",
+    "test:visual": "cross-env TESTS=ui npx playwright test --project=visual",
+    "test:api": "cross-env TESTS=api npx playwright test --project=api",
+    "ui-mode": "npx playwright test --ui",
+    "report-html-open": "npx playwright show-report",
+    "report-create": "allure generate allure-results -o allure-report --clean",
+    "report-open": "npm run report-create && allure open allure-report"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
