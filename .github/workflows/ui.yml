@@ -1,6 +1,8 @@
 name: Run Playwright UI tests
 on:
-  workflow_dispatch: # Manually trigger the workflow
+  pull_request:
+    branches:
+      - main
 jobs:
   test:
     timeout-minutes: 60
