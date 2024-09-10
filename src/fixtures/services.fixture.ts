@@ -4,33 +4,45 @@ import { HomeService } from "../ui/services/home.service";
 import { SignInService } from "../ui/services/signIn.service";
 import { CustomersApiService } from "../api/service/customers.service";
 import { test as base } from "@playwright/test";
+import { SignInApiService } from "../api/service/signIn.api";
+import { ProductsApiService } from "../api/service/products.service";
 
 interface ISalesPortalServices {
-  customersPageService: CustomersListService;
-  addNewCustomerPageService: AddCustomerService;
-  homePageService: HomeService;
-  signInPageService: SignInService;
-  customersApiService: CustomersApiService;
+	customersPageService: CustomersListService;
+	addNewCustomerPageService: AddCustomerService;
+	homePageService: HomeService;
+	signInPageService: SignInService;
+	customersApiService: CustomersApiService;
+	signInApiService: SignInApiService;
+	productsApiService: ProductsApiService;
 }
 
 export const test = base.extend<ISalesPortalServices>({
-  customersPageService: async ({ page }, use) => {
-    await use(new CustomersListService(page));
-  },
+	customersPageService: async ({ page }, use) => {
+		await use(new CustomersListService(page));
+	},
 
-  homePageService: async ({ page }, use) => {
-    await use(new HomeService(page));
-  },
+	homePageService: async ({ page }, use) => {
+		await use(new HomeService(page));
+	},
 
-  signInPageService: async ({ page }, use) => {
-    await use(new SignInService(page));
-  },
+	signInPageService: async ({ page }, use) => {
+		await use(new SignInService(page));
+	},
 
-  addNewCustomerPageService: async ({ page }, use) => {
-    await use(new AddCustomerService(page));
-  },
+	addNewCustomerPageService: async ({ page }, use) => {
+		await use(new AddCustomerService(page));
+	},
 
-  customersApiService: async ({}, use) => {
-    await use(new CustomersApiService());
-  },
+	customersApiService: async ({}, use) => {
+		await use(new CustomersApiService());
+	},
+
+	signInApiService: async ({}, use) => {
+		await use(new SignInApiService());
+	},
+
+	productsApiService: async ({}, use) => {
+		await use(new ProductsApiService());
+	},
 });

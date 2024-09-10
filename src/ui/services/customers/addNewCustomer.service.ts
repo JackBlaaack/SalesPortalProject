@@ -9,40 +9,40 @@ import { STATUS_CODES } from "../../../data/types/api.types.js";
 import { logStep } from "../../../utils/report/logStep.js";
 
 export class AddCustomerService {
-  private customersPage: CustomersListPage;
-  private addNewCustomerPage: AddNewCustomerPage;
+	private customersPage: CustomersListPage;
+	private addNewCustomerPage: AddNewCustomerPage;
 
-  constructor(protected page: Page) {
-    this.addNewCustomerPage = new AddNewCustomerPage(page);
-    this.customersPage = new CustomersListPage(page);
-  }
+	constructor(protected page: Page) {
+		this.addNewCustomerPage = new AddNewCustomerPage(page);
+		this.customersPage = new CustomersListPage(page);
+	}
 
-  @logStep()
-  async fillCustomerInputs(customer: Partial<ICustomer>) {
-    await this.addNewCustomerPage.fillInputs(customer);
-  }
+	@logStep()
+	async fillCustomerInputs(customer: Partial<ICustomer>) {
+		await this.addNewCustomerPage.fillInputs(customer);
+	}
 
-  @logStep()
-  async save() {
-    await this.addNewCustomerPage.clickOnSaveButton();
-  }
+	@logStep()
+	async save() {
+		await this.addNewCustomerPage.clickOnSaveButton();
+	}
 
-  @logStep()
-  async create(customer?: ICustomer) {
-    const customerData = customer ?? generateNewCustomer();
-    await this.fillCustomerInputs(customerData);
-    const responseUrl = apiConfig.baseUrl + apiConfig.endpoints.Customers;
-    const response = await this.addNewCustomerPage.interceptResponse<ICustomerResponse>(
-      responseUrl,
-      this.save.bind(this)
-    );
-    validateResponse<ICustomerResponse>(response, STATUS_CODES.CREATED, true, null);
-    expect(response.body.Customer).toMatchObject({
-      ...customerData,
-      createdOn: response.body.Customer.createdOn,
-      _id: response.body.Customer._id,
-    });
-    await this.addNewCustomerPage.waitForSpinnerToHide();
-    await this.customersPage.waitForOpened();
-  }
+	@logStep()
+	async create(customer?: ICustomer) {
+		const customerData = customer ?? generateNewCustomer();
+		await this.fillCustomerInputs(customerData);
+		const responseUrl = apiConfig.baseUrl + apiConfig.endpoints.Customers;
+		const response = await this.addNewCustomerPage.interceptResponse<ICustomerResponse>(
+			responseUrl,
+			this.save.bind(this)
+		);
+		validateResponse<ICustomerResponse>(response, STATUS_CODES.CREATED, true, null);
+		expect(response.body.Customer).toMatchObject({
+			...customerData,
+			createdOn: response.body.Customer.createdOn,
+			_id: response.body.Customer._id,
+		});
+		await this.addNewCustomerPage.waitForSpinnerToHide();
+		await this.customersPage.waitForOpened();
+	}
 }
