@@ -13,10 +13,14 @@ test.describe.skip("[UI] [Customers] Smoke", async function () {
     // await signInPageService.loginAsAdmin();
   });
 
-  test("Create customer with valid data", async function ({ homePageService, customersPageService, mock }) {
-    const getCustomersUrl = apiConfig.baseUrl + apiConfig.endpoints.Customers;
-    await mock.modifyReponse(getCustomersUrl, EMPTY_TABLE_MOCK, STATUS_CODES.OK);
-    await homePageService.openCustomersPage();
-    await customersPageService.validateEmptyTable();
-  });
+	test("Create customer with valid data", async function ({
+		homePageService,
+		customersPageService,
+		mock,
+	}) {
+		const getCustomersUrl = apiConfig.baseUrl + apiConfig.endpoints.Customers;
+		await mock.modifyReponse(getCustomersUrl, EMPTY_TABLE_MOCK, STATUS_CODES.OK);
+		await homePageService.openCustomersPage();
+		await customersPageService.validateEmptyTable();
+	});
 });

@@ -8,6 +8,7 @@ import { ProductsApiService } from "../api/service/products.service";
 import { OrdersListService } from "../ui/services/orders/orders.service";
 import { CreateOrderPopUpService } from "../ui/services/orders/createOrderPopUp.service";
 import { SalesPortalService } from "../ui/services/salesPortal.service";
+import { SignInApiService } from "../api/service/signIn.api";
 
 interface ISalesPortalServices {
   customersPageService: CustomersListService;
@@ -18,25 +19,26 @@ interface ISalesPortalServices {
   productsApiService: ProductsApiService;
   ordersListService: OrdersListService;
   createOrderPopUpService: CreateOrderPopUpService;
-  salesPortalService: SalesPortalService
+  salesPortalService: SalesPortalService;
+  signInApiService: SignInApiService;
 }
 
 export const test = base.extend<ISalesPortalServices>({
-  customersPageService: async ({ page }, use) => {
-    await use(new CustomersListService(page));
-  },
+	customersPageService: async ({ page }, use) => {
+		await use(new CustomersListService(page));
+	},
 
-  homePageService: async ({ page }, use) => {
-    await use(new HomeService(page));
-  },
+	homePageService: async ({ page }, use) => {
+		await use(new HomeService(page));
+	},
 
-  signInPageService: async ({ page }, use) => {
-    await use(new SignInService(page));
-  },
+	signInPageService: async ({ page }, use) => {
+		await use(new SignInService(page));
+	},
 
-  addNewCustomerPageService: async ({ page }, use) => {
-    await use(new AddCustomerService(page));
-  },
+	addNewCustomerPageService: async ({ page }, use) => {
+		await use(new AddCustomerService(page));
+	},
 
   customersApiService: async ({}, use) => {
     await use(new CustomersApiService());
@@ -57,4 +59,8 @@ export const test = base.extend<ISalesPortalServices>({
   salesPortalService: async ({ page }, use) => {
     await use(new SalesPortalService(page));
   },
+
+  signInApiService: async ({}, use) => {
+		await use(new SignInApiService());
+	},
 });

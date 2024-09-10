@@ -6,36 +6,36 @@ import { SignInPage } from "../pages/login.page.js";
 import { logStep } from "../../utils/report/logStep.js";
 
 export class SignInService {
-  private signInPage: SignInPage;
-  private homePage: HomePage;
-  constructor(protected page: Page) {
-    this.signInPage = new SignInPage(page);
-    this.homePage = new HomePage(page);
-  }
+	private signInPage: SignInPage;
+	private homePage: HomePage;
+	constructor(protected page: Page) {
+		this.signInPage = new SignInPage(page);
+		this.homePage = new HomePage(page);
+	}
 
-  @logStep()
-  async openSalesPortal() {
-    await this.signInPage.openPage("https://anatoly-karpovich.github.io/aqa-course-project");
-  }
+	@logStep()
+	async openSalesPortal() {
+		await this.signInPage.openPage("https://anatoly-karpovich.github.io/aqa-course-project");
+	}
 
-  @logStep()
-  async login(credentials: IUserCredentials) {
-    await this.signInPage.fillCredentialsInputs(credentials);
-    await this.signInPage.clickSubmitButton();
-    await this.signInPage.waitForSpinnerToHide();
-    await this.homePage.waitForOpened();
-  }
+	@logStep()
+	async login(credentials: IUserCredentials) {
+		await this.signInPage.fillCredentialsInputs(credentials);
+		await this.signInPage.clickSubmitButton();
+		await this.signInPage.waitForSpinnerToHide();
+		await this.homePage.waitForOpened();
+	}
 
-  @logStep()
-  async loginAsAdmin() {
-    await this.login({ username: ADMIN_USERNAME, password: ADMIN_PASSWORD });
-  }
+	@logStep()
+	async loginAsAdmin() {
+		await this.login({ username: ADMIN_USERNAME, password: ADMIN_PASSWORD });
+	}
 
-  async fillInputs(credentials: IUserCredentials) {
-    await this.signInPage.fillCredentialsInputs(credentials);
-  }
+	async fillInputs(credentials: IUserCredentials) {
+		await this.signInPage.fillCredentialsInputs(credentials);
+	}
 
-  // async signOut() {
-  //   await this.signInPage.deleteCookies(["Authorization"]);
-  // }
+	// async signOut() {
+	//   await this.signInPage.deleteCookies(["Authorization"]);
+	// }
 }

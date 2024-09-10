@@ -6,9 +6,9 @@ export abstract class SalesPortalPage extends BasePage {
   private readonly notification = '.toast-container.notification-wrapper .toast-body';
   private readonly closeNotificationButton = '.toast-container.notification-wrapper .btn-close';
 
-  async waitForOpened() {
-    await this.waitForElement(this.uniqueElement);
-  }
+	async waitForOpened() {
+		await this.waitForElement(this.uniqueElement);
+	}
 
   async waitForSpinnerToHide() {
     await this.waitForElement(this.spinner, "hidden");
@@ -16,9 +16,9 @@ export abstract class SalesPortalPage extends BasePage {
 
   async getNotificationText() {
     return await this.getText(this.notification)
-}
+  }
 
-async closeNotificationWindow() {
+  async closeNotificationWindow() {
     await this.click(this.closeNotificationButton)
-}
+  }
 }

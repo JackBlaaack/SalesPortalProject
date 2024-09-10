@@ -8,3 +8,5 @@ allure-results
 allure-report
 src/.auth
 logs
+/api/clients/products.client.toPlay.ts
+/api/tests/products.negative.spec.ts
