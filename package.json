@@ -1,37 +1,37 @@
 {
-	"name": "salesportalproject",
-	"version": "1.0.0",
-	"description": "",
-	"main": "index.js",
-	"scripts": {
-		"test": "npx playwright test",
-		"ui-mode": "npx playwright test --ui",
-		"test:ui": "npx playwright test --project=ui",
-		"test:visual": "npx playwright test --project=visual",
-		"test:api": "npx playwright test --project=api",
-		"report-html-open": "npx playwright show-report",
-		"report-create": "allure generate allure-results -o allure-report --clean",
-		"report-open": "npm run report-create && allure open allure-report"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"devDependencies": {
-		"@playwright/test": "^1.46.1",
-		"@types/dotenv": "^8.2.0",
-		"@types/lodash": "^4.17.7",
-		"@types/node": "^22.5.4",
-		"ajv": "^8.17.1",
-		"allure-commandline": "^2.30.0",
-		"allure-playwright": "^3.0.0-beta.11",
-		"cross-env": "^7.0.3",
-		"playwright": "^1.46.1",
-		"ts-node": "^10.9.2",
-		"typescript": "^5.5.4"
-	},
-	"dependencies": {
-		"@faker-js/faker": "^9.0.0",
-		"dotenv": "^16.4.5",
-		"lodash": "^4.17.21"
-	}
+  "name": "salesportalproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:ui": "cross-env TESTS=ui npx playwright test --project=ui",
+    "test:visual": "cross-env TESTS=ui npx playwright test --project=visual",
+    "test:api": "cross-env TESTS=api npx playwright test --project=api",
+    "ui-mode": "npx playwright test --ui",
+    "report-html-open": "npx playwright show-report",
+    "report-create": "allure generate allure-results -o allure-report --clean",
+    "report-open": "npm run report-create && allure open allure-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.46.1",
+    "@types/dotenv": "^8.2.0",
+    "@types/lodash": "^4.17.7",
+    "@types/node": "^22.5.4",
+    "ajv": "^8.17.1",
+    "allure-commandline": "^2.30.0",
+    "allure-playwright": "^3.0.0-beta.11",
+    "cross-env": "^7.0.3",
+    "playwright": "^1.46.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.0.0",
+    "dotenv": "^16.4.5",
+    "lodash": "^4.17.21"
+  }
 }

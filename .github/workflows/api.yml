@@ -1,6 +1,9 @@
 name: Run Playwright API tests
 on:
- workflow_dispatch: # Manually trigger the workflow
+workflow_dispatch:
+  pull_request:
+    branches:
+      - main
 jobs:
  test:
   timeout-minutes: 60
