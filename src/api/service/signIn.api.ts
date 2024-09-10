@@ -1,10 +1,10 @@
 import { expect } from "allure-playwright";
-import { ADMIN_PASSWORD, ADMIN_USERNAME } from "../../config/environment";
-import { SignInApiClient } from "../clients/signIn.client";
+import { ADMIN_PASSWORD, ADMIN_USERNAME } from "../../config/enviroments";
+import { SignInApiClient } from "../../api/clients/signIn.client";
 import { STATUS_CODES } from "../../data/types/api.types";
 
 class SignInApiService {
-  private token: string;
+  private token!: string;
 
   constructor(private signInClient = new SignInApiClient()) {}
 

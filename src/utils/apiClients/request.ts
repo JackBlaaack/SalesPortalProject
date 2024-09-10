@@ -4,7 +4,7 @@ import { apiConfig } from "../../config/apiConfig";
 import _ from "lodash";
 
 export class RequestApi {
-  private response: APIResponse;
+  private response!: APIResponse;
 
   async send<T extends IResponseFields>(options: IRequestOptions): Promise<IResponse<T>> {
     try {

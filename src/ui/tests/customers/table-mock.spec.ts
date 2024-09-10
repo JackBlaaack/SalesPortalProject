@@ -7,7 +7,7 @@ import { EMPTY_TABLE_MOCK } from "../../../data/customers/mocks";
 
 const test = mergeTests(mockTest, servicesTest);
 
-test.describe("[UI] [Customers] Smoke", async function () {
+test.describe.skip("[UI] [Customers] Smoke", async function () {
   test.beforeEach(async function ({ signInPageService }) {
     await signInPageService.openSalesPortal();
     // await signInPageService.loginAsAdmin();

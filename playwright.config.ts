@@ -14,7 +14,7 @@ import * as dotenv from 'dotenv';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './src/ui/tests',
+  testDir: './src',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -46,17 +46,21 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    { name: "setup", testMatch: /.*\.setup\.ts/ },
-    {
-      name: "ui",
-      use: {
-        ...devices["Desktop Chrome"],
-        headless: true,
-        storageState: "src/.auth/user.json",
-      },
-      dependencies: ["setup"],
-      testMatch: /.*\.spec\.ts/,
-    },
+		{
+			name: 'chromium',
+			use: { ...devices['Desktop Chrome'], headless: false },
+		},
+		{ name: 'setup', testMatch: /.*\.setup\.ts/ },
+		{
+			name: 'ui',
+			use: {
+				...devices['Desktop Chrome'],
+				headless: true,
+		//		storageState: 'src/.auth/user.json',
+			},
+		//	dependencies: ["setup"],
+			testMatch: /.*\.spec\.ts/,
+		},
 
     {
       name: "api",
@@ -71,10 +75,14 @@ export default defineConfig({
       name: "visual",
       use: {
         ...devices["Desktop Chrome"],
-        headless: true,
+        headless: false,
       },
       testMatch: /.*\.visual\.ts/,
     },
+    // {
+    //     name: 'chromium',
+    //     use: { ...devices['Desktop Chrome'], headless: false,},
+    //   },
 
     // {
     //   name: 'firefox',
