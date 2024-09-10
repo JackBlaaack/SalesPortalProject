@@ -1,5 +1,6 @@
 import { apiConfig } from "../../config/apiConfig";
-import { ICustomer, ICustomerResponse } from "../../data/types/customers.types";
+import { IRequestOptions } from "../../data/types/api.types";
+import { ICustomer, ICustomerResponse, ICustomersResponse } from "../../data/types/customers.types";
 import { RequestApi } from "../../utils/apiClients/request";
 
 class CustomerApiClient {
@@ -15,6 +16,55 @@ class CustomerApiClient {
 				Authorization: token,
 			},
 		});
+	}
+
+	async deleteCustomerbyId(id: string, token: string) {
+		const options: IRequestOptions = {
+			method: "delete",
+			url: apiConfig.endpoints.Customers + `${id}/`,
+			headers: {
+				Authorization: token,
+				"Content-Type": "application/json",
+			},
+		};
+		return this.request.send<ICustomerResponse>(options);
+	}
+
+	async viewCustomerbyId(id: string, token: string) {
+		const options: IRequestOptions = {
+			method: "get",
+			url: apiConfig.endpoints.Customers + `${id}/`,
+			headers: {
+				Authorization: token,
+				"Content-Type": "application/json",
+			},
+		};
+		return this.request.send<ICustomerResponse>(options);
+	}
+
+	async getAllCustomers(token: string) {
+		const options: IRequestOptions = {
+			method: "get",
+			url: apiConfig.endpoints.Customers,
+			headers: {
+				Authorization: token,
+				"Content-Type": "application/json",
+			},
+		};
+		return this.request.send<ICustomersResponse>(options);
+	}
+
+	async updateCustomerById(id: string, updatedCustomerData: ICustomer, token: string) {
+		const options: IRequestOptions = {
+			method: "put",
+			url: apiConfig.endpoints.Customers,
+			headers: {
+				Authorization: token,
+				"Content-Type": "application/json",
+			},
+			data: updatedCustomerData,
+		};
+		return this.request.send<ICustomerResponse>(options);
 	}
 }
 
