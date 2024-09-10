@@ -17,7 +17,6 @@ export class CustomersApiService {
 		validateResponse(response, STATUS_CODES.CREATED, true, null);
 		return response.body.Customer;
 	}
-
 	async viewAllCustomers() {
 		const response = await this.customersClient.getAllCustomers(await signInApi.getToken());
 		validateResponse(response, STATUS_CODES.OK, true, null);
@@ -44,4 +43,5 @@ export class CustomersApiService {
 		validateResponse(response, STATUS_CODES.OK, true, null);
 		return response;
 	}
+
 }
