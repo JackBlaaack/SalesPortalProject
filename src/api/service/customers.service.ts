@@ -7,11 +7,14 @@ import customersApiClient from "../clients/customers.client";
 import signInApi from "./signIn.api";
 
 export class CustomersApiService {
-  constructor(private customersClient = customersApiClient, private signInService = signInApi) {}
+	constructor(private customersClient = customersApiClient, private signInService = signInApi) {}
 
-  async create(customerData?: Partial<ICustomer>) {
-    const response = await this.customersClient.create(generateNewCustomer(customerData), await signInApi.getToken());
-    validateResponse(response, STATUS_CODES.CREATED, true, null);
-    return response.body.Customer;
-  }
+	async create(customerData?: Partial<ICustomer>) {
+		const response = await this.customersClient.create(
+			generateNewCustomer(customerData),
+			await signInApi.getToken()
+		);
+		validateResponse(response, STATUS_CODES.CREATED, true, null);
+		return response.body.Customer;
+	}
 }

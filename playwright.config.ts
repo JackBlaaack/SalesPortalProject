@@ -1,5 +1,5 @@
-import { defineConfig, devices } from '@playwright/test';
-import * as dotenv from 'dotenv';
+import { defineConfig, devices } from "@playwright/test";
+import * as dotenv from "dotenv";
 dotenv.config();
 
 /**
@@ -14,7 +14,7 @@ dotenv.config();
  */
 export default defineConfig({
 	// testDir: './src/ui/tests',
-	testDir: './src',
+	testDir: "./src",
 	/* Run tests in files in parallel */
 	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -25,12 +25,12 @@ export default defineConfig({
 	workers: process.env.CI ? 1 : undefined,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
 	reporter: [
-		['html'],
+		["html"],
 		[
-			'allure-playwright',
+			"allure-playwright",
 			{
 				// detail: true,
-				outputFolder: 'allure-results',
+				outputFolder: "allure-results",
 				suiteTitle: false,
 			},
 		],
@@ -41,20 +41,20 @@ export default defineConfig({
 		// baseURL: 'http://127.0.0.1:3000',
 
 		/* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-		trace: 'on-first-retry',
+		trace: "on-first-retry",
 	},
 
 	/* Configure projects for major browsers */
 	projects: [
 		{
-			name: 'chromium',
-			use: { ...devices['Desktop Chrome'], headless: false },
+			name: "chromium",
+			use: { ...devices["Desktop Chrome"], headless: false },
 		},
-		{ name: 'setup', testMatch: /.*\.setup\.ts/ },
+		{ name: "setup", testMatch: /.*\.setup\.ts/ },
 		{
-			name: 'ui',
+			name: "ui",
 			use: {
-				...devices['Desktop Chrome'],
+				...devices["Desktop Chrome"],
 				headless: true,
 				// storageState: 'src/.auth/user.json',
 			},
@@ -63,18 +63,18 @@ export default defineConfig({
 		},
 
 		{
-			name: 'api',
+			name: "api",
 			testMatch: /.*\.spec\.ts/,
 			use: {
-				...devices['Desktop Chrome'],
+				...devices["Desktop Chrome"],
 				headless: true,
 			},
 		},
 
 		{
-			name: 'visual',
+			name: "visual",
 			use: {
-				...devices['Desktop Chrome'],
+				...devices["Desktop Chrome"],
 				headless: true,
 			},
 			testMatch: /.*\.visual\.ts/,

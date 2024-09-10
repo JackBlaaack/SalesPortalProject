@@ -1,4 +1,4 @@
-import { ADMIN_PASSWORD, ADMIN_USERNAME } from '../config/enviroments';
+import { ADMIN_PASSWORD, ADMIN_USERNAME } from "../config/enviroments";
 
 export const adminCredentials = {
 	username: ADMIN_USERNAME,

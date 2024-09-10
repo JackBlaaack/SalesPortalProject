@@ -1,10 +1,10 @@
-import { generateNewProduct } from '../../data/products/generateProduct';
-import { STATUS_CODES } from '../../data/types/api.types';
-import { IProduct, IProductFromResponse } from '../../data/types/product.types';
-import { validateResponse } from '../../utils/validation/response';
-import signInApi from './signIn.api';
-import { ProductsApiClient } from '../clients/products.client';
-import { expect } from '@playwright/test';
+import { generateNewProduct } from "../../data/products/generateProduct";
+import { STATUS_CODES } from "../../data/types/api.types";
+import { IProduct, IProductFromResponse } from "../../data/types/product.types";
+import { validateResponse } from "../../utils/validation/response";
+import signInApi from "./signIn.api";
+import { ProductsApiClient } from "../clients/products.client";
+import { expect } from "@playwright/test";
 
 export class ProductsApiService {
 	constructor(

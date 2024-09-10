@@ -1,18 +1,18 @@
-import { expect } from '@playwright/test';
-import { generateNewProduct } from '../../data/products/generateProduct';
-import { STATUS_CODES } from '../../data/types/api.types';
-import { IProduct, IProductResponse, MANUFACTURERS } from '../../data/types/product.types';
-import { test } from '../../fixtures/services.fixture';
-import _ from 'lodash';
-import { getRandomItemIndex } from '../../utils/enums/getRandomValue';
+import { expect } from "@playwright/test";
+import { generateNewProduct } from "../../data/products/generateProduct";
+import { STATUS_CODES } from "../../data/types/api.types";
+import { IProduct, IProductResponse, MANUFACTURERS } from "../../data/types/product.types";
+import { test } from "../../fixtures/services.fixture";
+import _ from "lodash";
+import { getRandomItemIndex } from "../../utils/enums/getRandomValue";
 
-test.describe('[API] [Products] Smoke with fixtures', async function () {
-	test('Create product with valid data with fixture', async function ({ productsApiService }) {
+test.describe("[API] [Products] Smoke with fixtures", async function () {
+	test("Create product with valid data with fixture", async function ({ productsApiService }) {
 		const productData = generateNewProduct();
 		const response = await productsApiService.create(productData);
 	});
 
-	test('Create product with valid data with fixture and delete it', async function ({
+	test("Create product with valid data with fixture and delete it", async function ({
 		productsApiService,
 	}) {
 		const productData = generateNewProduct();
@@ -22,11 +22,11 @@ test.describe('[API] [Products] Smoke with fixtures', async function () {
 		expect(responseDeleted.status).toBe(STATUS_CODES.DELETED);
 	});
 
-	test('View list of products with fixture', async function ({ productsApiService }) {
+	test("View list of products with fixture", async function ({ productsApiService }) {
 		const productsList = await productsApiService.viewAllProducts();
 	});
 
-	test('View list of products and delete latest product with fixture', async function ({
+	test("View list of products and delete latest product with fixture", async function ({
 		productsApiService,
 	}) {
 		const productsList = await productsApiService.viewAllProducts();
@@ -34,7 +34,7 @@ test.describe('[API] [Products] Smoke with fixtures', async function () {
 		await productsApiService.delete(id);
 	});
 
-	test('View list of products and delete random product by id with fixture', async function ({
+	test("View list of products and delete random product by id with fixture", async function ({
 		productsApiService,
 	}) {
 		const productsList = await productsApiService.viewAllProducts();
@@ -44,7 +44,7 @@ test.describe('[API] [Products] Smoke with fixtures', async function () {
 		await productsApiService.delete(id);
 	});
 
-	test('View list of products and update latest product name with fixture', async function ({
+	test("View list of products and update latest product name with fixture", async function ({
 		productsApiService,
 	}) {
 		const productsList = await productsApiService.viewAllProducts();

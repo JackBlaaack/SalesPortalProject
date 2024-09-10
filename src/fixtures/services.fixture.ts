@@ -1,11 +1,11 @@
-import { AddCustomerService } from '../ui/services/customers/addNewCustomer.service';
-import { CustomersListService } from '../ui/services/customers/customers.service';
-import { HomeService } from '../ui/services/home.service';
-import { SignInService } from '../ui/services/signIn.service';
-import { CustomersApiService } from '../api/service/customers.service';
-import { test as base } from '@playwright/test';
-import { SignInApiService } from '../api/service/signIn.api';
-import { ProductsApiService } from '../api/service/products.service';
+import { AddCustomerService } from "../ui/services/customers/addNewCustomer.service";
+import { CustomersListService } from "../ui/services/customers/customers.service";
+import { HomeService } from "../ui/services/home.service";
+import { SignInService } from "../ui/services/signIn.service";
+import { CustomersApiService } from "../api/service/customers.service";
+import { test as base } from "@playwright/test";
+import { SignInApiService } from "../api/service/signIn.api";
+import { ProductsApiService } from "../api/service/products.service";
 
 interface ISalesPortalServices {
 	customersPageService: CustomersListService;
