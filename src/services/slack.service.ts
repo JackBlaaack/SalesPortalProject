@@ -1,4 +1,4 @@
-import { SLACK_NOTIFICATION_URL } from "../config/environment";
+import { SLACK_NOTIFICATION_URL } from "../config/enviroments";
 import { IRequestOptions } from "../data/types/api.types";
 import { RequestApi } from "../utils/apiClients/request";
 
