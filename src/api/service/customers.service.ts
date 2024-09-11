@@ -3,7 +3,6 @@ import { STATUS_CODES } from "../../data/types/api.types";
 import { ICustomer } from "../../data/types/customers.types";
 import { validateResponse } from "../../utils/validation/response";
 import customersApiClient from "../clients/customers.client";
-
 import signInApi from "./signIn.api";
 
 export class CustomersApiService {

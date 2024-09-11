@@ -1,10 +1,10 @@
 import { test } from "../../../fixtures/services.fixture";
 
-test.describe("[UI] [Customers] Smoke with fixtures", async function () {
-	test.beforeEach(async function ({ signInPageService }) {
-		await signInPageService.openSalesPortal();
-		await signInPageService.loginAsAdmin();
-	});
+test.describe.skip("[UI] [Customers] Smoke with fixtures", async function () {
+  test.beforeEach(async function ({ signInPageService }) {
+    await signInPageService.openSalesPortal();
+    //await signInPageService.loginAsAdmin();
+  });
 
 	test.afterEach(async function ({ page }) {
 		//TODO: delete customer

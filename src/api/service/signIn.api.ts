@@ -4,7 +4,7 @@ import { STATUS_CODES } from "../../data/types/api.types";
 import { SignInApiClient } from "../../api/clients/signIn.client";
 
 export class SignInApiService {
-	private token: string;
+	private token!: string;
 
 	constructor(private signInClient = new SignInApiClient()) {}
 
