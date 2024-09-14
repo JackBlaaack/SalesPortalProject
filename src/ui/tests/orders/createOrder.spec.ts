@@ -1,4 +1,3 @@
-import { MODULE } from "data/moduleName";
 import { INOTIFICATION } from "../../../data/textNotification";
 import { test } from "../../../fixtures/services.fixture";
 import { expect } from "@playwright/test";
@@ -21,7 +20,7 @@ test.describe('[E2E][Create order]', async function () {
         }) {
         const createdCustomer = await customersApiService.create();
         const createdProduct = await productsApiService.create();
-        await homePageService.openModulePage(MODULE.ORDERS);
+        await homePageService.openOrdersPage();
 
         await ordersListService.openCreateOrderPopUp();
         await createOrderPopUpService.selectCustomer(createdCustomer.name);
