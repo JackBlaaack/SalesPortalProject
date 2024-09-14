@@ -1,3 +1,4 @@
+import { MODULE } from "data/moduleName";
 import { test } from "../../../fixtures/services.fixture";
 
 test.describe.skip("[UI] [Customers] Smoke with fixtures", async function () {
@@ -15,7 +16,7 @@ test.describe.skip("[UI] [Customers] Smoke with fixtures", async function () {
 		customersPageService,
 		addNewCustomerPageService,
 	}) {
-		await homePageService.openCustomersPage();
+		await homePageService.openModulePage(MODULE.CUSTOMERS);
 		await customersPageService.openAddNewCustomerPage();
 		await addNewCustomerPageService.create();
 		//TODO: check customer in table
@@ -28,7 +29,7 @@ test.describe.skip("[UI] [Customers] Smoke with fixtures", async function () {
 		page,
 	}) {
 		const createdCustomer = customersApiService.create();
-		await homePageService.openCustomersPage();
+		await homePageService.openModulePage(MODULE.CUSTOMERS);
 		// await page.pause();
 	});
 });
