@@ -12,6 +12,7 @@ export class OrdersListPage extends SalesPortalPage {
   private readonly 'Status by table row' = (order: string) => `${this['Table row selector'](order)}/td[7]`;
   readonly "Details button by table row" = (order: string) =>
     `${this["Table row selector"](order)}//button[@title="Details"]`;
+  readonly "Empty table message" = "td.fs-italic";
   
   async clickOnCreateOrder() {
     await this.click(this["Create Order button"]);
@@ -27,4 +28,8 @@ export class OrdersListPage extends SalesPortalPage {
     ]);
     return { name, email, price: +price.replace('$', ''), delivery, status };
   }
+
+  async getEmptyTableMessage() {
+		return this.getText(this["Empty table message"]);
+	}
 }

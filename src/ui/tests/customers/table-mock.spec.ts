@@ -4,6 +4,7 @@ import { mergeTests } from "@playwright/test";
 import { apiConfig } from "../../../config/apiConfig";
 import { STATUS_CODES } from "../../../data/types/api.types";
 import { EMPTY_TABLE_MOCK } from "../../../data/customers/mocks";
+import { MODULE } from "data/moduleName";
 
 const test = mergeTests(mockTest, servicesTest);
 
@@ -20,7 +21,7 @@ test.describe.skip("[UI] [Customers] Smoke", async function () {
 	}) {
 		const getCustomersUrl = apiConfig.baseUrl + apiConfig.endpoints.Customers;
 		await mock.modifyReponse(getCustomersUrl, EMPTY_TABLE_MOCK, STATUS_CODES.OK);
-		await homePageService.openCustomersPage();
+		await homePageService.openModulePage(MODULE.CUSTOMERS);
 		await customersPageService.validateEmptyTable();
 	});
 });
