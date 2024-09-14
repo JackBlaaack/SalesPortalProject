@@ -59,12 +59,12 @@ export default defineConfig({
 				// storageState: 'src/.auth/user.json',
 			},
 			// dependencies: ["setup"],
-			testMatch: /.*\.spec\.ts/,
+			testMatch: /.*\.ui.spec\.ts/,
 		},
 
 		{
 			name: "api",
-			testMatch: /.*\.spec\.ts/,
+			testMatch: /.*\.api.spec\.ts/,
 			use: {
 				...devices["Desktop Chrome"],
 				headless: true,
