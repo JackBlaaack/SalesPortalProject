@@ -3,10 +3,7 @@ on:
   pull_request:
     branches:
       - main
-      types:
-      - opened
-
-  workflow_dispatch:
+      
 jobs:
  test:
   timeout-minutes: 60
