@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "npx playwright test",
     "test:ui": "cross-env TESTS=ui npx playwright test --project=ui",
@@ -11,23 +12,30 @@
     "ui-mode": "npx playwright test --ui",
     "report-html-open": "npx playwright show-report",
     "report-create": "allure generate allure-results -o allure-report --clean",
-    "report-open": "npm run report-create && allure open allure-report"
+    "report-open": "npm run report-create && allure open allure-report",
+    "lint": "npx eslint"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^9.10.0",
     "@playwright/test": "^1.46.1",
     "@types/dotenv": "^8.2.0",
     "@types/lodash": "^4.17.7",
     "@types/node": "^22.5.4",
+    "@typescript-eslint/eslint-plugin": "^8.5.0",
+    "@typescript-eslint/parser": "^8.5.0",
     "ajv": "^8.17.1",
     "allure-commandline": "^2.30.0",
     "allure-playwright": "^3.0.0-beta.11",
     "cross-env": "^7.0.3",
+    "eslint": "^9.10.0",
+    "globals": "^15.9.0",
     "playwright": "^1.46.1",
     "ts-node": "^10.9.2",
-    "typescript": "^5.5.4"
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.5.0"
   },
   "dependencies": {
     "@faker-js/faker": "^9.0.0",
