@@ -16,8 +16,15 @@ export class HomeService {
   }
 
   @logStep()
-  async openModulePage(module: MODULE) {
-    await this.homePage.clickOnViewDetailsButton(module);
+  async openCustomersPage() {
+    await this.homePage.clickOnViewDetailsButton(MODULE.CUSTOMERS);
+    await this.homePage.waitForSpinnerToHide();
+    await this.customersPage.waitForOpened();
+  }
+  
+  @logStep()
+  async openOrdersPage() {
+    await this.homePage.clickOnViewDetailsButton(MODULE.ORDERS);
     await this.homePage.waitForSpinnerToHide();
     await this.ordersPage.waitForOpened();
   }
