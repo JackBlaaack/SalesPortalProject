@@ -46,10 +46,10 @@ export default defineConfig({
 
 	/* Configure projects for major browsers */
 	projects: [
-		{
-			name: "chromium",
-			use: { ...devices["Desktop Chrome"], headless: false },
-		},
+		// {
+		// 	name: "chromium",
+		// 	use: { ...devices["Desktop Chrome"], headless: false },
+		// },
 		{ name: "setup", testMatch: /.*\.setup\.ts/ },
 		{
 			name: "ui",
@@ -59,12 +59,12 @@ export default defineConfig({
 				// storageState: 'src/.auth/user.json',
 			},
 			// dependencies: ["setup"],
-			testMatch: /.*\.spec\.ts/,
+			testMatch: /.*\.ui.spec\.ts/,
 		},
 
 		{
 			name: "api",
-			testMatch: /.*\.spec\.ts/,
+			testMatch: /.*\.api.spec\.ts/,
 			use: {
 				...devices["Desktop Chrome"],
 				headless: true,

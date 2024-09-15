@@ -3,24 +3,24 @@ import { test as mockTest } from "../../fixtures/mock.fixture";
 import { mergeTests } from "@playwright/test";
 import { apiConfig } from "../../config/apiConfig";
 import { STATUS_CODES } from "../../data/types/api.types";
-import { EMPTY_TABLE_MOCK } from "../../data/orders/mocks";
+import { EMPTY_TABLE_MOCK } from "../../data/customers/mocks";
 
 const test = mergeTests(mockTest, servicesTest);
 
-test.describe("[Visual] [Orders table]", async function () {
+test.describe("[UI] [Customers table]", async function () {
   test.beforeEach(async function ({ signInPageService }) {
     await signInPageService.openSalesPortal();
     await signInPageService.loginAsAdmin();
   });
 
-	test("Validate empty table", async function ({
+	test("Create customer with valid data", async function ({
 		homePageService,
-		ordersListService,
+		customersPageService,
 		mock,
 	}) {
-		const getOrdersUrl = apiConfig.baseUrl + apiConfig.endpoints.Orders;
-		await mock.modifyReponse(getOrdersUrl, EMPTY_TABLE_MOCK, STATUS_CODES.OK);
+		const getCustomersUrl = apiConfig.baseUrl + apiConfig.endpoints.Customers;
+		await mock.modifyReponse(getCustomersUrl, EMPTY_TABLE_MOCK, STATUS_CODES.OK);
 		await homePageService.openCustomersPage();
-		await ordersListService.validateEmptyTable();
+		await customersPageService.validateEmptyTable();
 	});
 });

@@ -9,6 +9,7 @@ import { OrdersListService } from "../ui/services/orders/orders.service";
 import { CreateOrderPopUpService } from "../ui/services/orders/createOrderPopUp.service";
 import { SalesPortalService } from "../ui/services/salesPortal.service";
 import { SignInApiService } from "../api/service/signIn.api";
+import { OrdersApiService } from "api/service/orders.service";
 
 interface ISalesPortalServices {
   customersPageService: CustomersListService;
@@ -17,6 +18,7 @@ interface ISalesPortalServices {
   signInPageService: SignInService;
   customersApiService: CustomersApiService;
   productsApiService: ProductsApiService;
+  ordersApiService: OrdersApiService;
   ordersListService: OrdersListService;
   createOrderPopUpService: CreateOrderPopUpService;
   salesPortalService: SalesPortalService;
@@ -46,6 +48,10 @@ export const test = base.extend<ISalesPortalServices>({
 
   productsApiService: async ({}, use) => {
     await use(new ProductsApiService())
+  },
+
+  ordersApiService: async ({}, use) => {
+    await use(new OrdersApiService())
   },
 
   ordersListService: async ({ page }, use) => {
