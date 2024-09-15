@@ -46,10 +46,10 @@ export default defineConfig({
 
 	/* Configure projects for major browsers */
 	projects: [
-		{
-			name: "chromium",
-			use: { ...devices["Desktop Chrome"], headless: false },
-		},
+		// {
+		// 	name: "chromium",
+		// 	use: { ...devices["Desktop Chrome"], headless: false },
+		// },
 		{ name: "setup", testMatch: /.*\.setup\.ts/ },
 		{
 			name: "ui",

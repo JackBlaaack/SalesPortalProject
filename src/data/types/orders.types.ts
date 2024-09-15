@@ -17,6 +17,19 @@ export interface IOrderFromResponse extends IOrder {
 	createdOn: string;
 }
 
+export interface IOrderResponse extends IResponseFields {
+	Orders: IOrderFromResponse;
+}
+
 export interface IOrdersResponse extends IResponseFields {
 	Orders: IOrderFromResponse[];
+}
+
+export interface IOrderInTable {
+	id: string;
+	name: string;
+	email: string;
+	delivery: string;
+	status: string;
+	price: number;
 }
